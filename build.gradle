@@ -74,6 +74,8 @@ android {
 		versionCode getVersionCode()
 		versionName getVersionName()
 		archivesBaseName = "${project.name}-${versionName}"
+		minSdkVersion 19
+		targetSdkVersion 26
 	}
 
 	applicationVariants.all {
@@ -217,6 +219,9 @@ android {
 		}
 		vhw_burundi {
 			applicationId = 'org.medicmobile.webapp.mobile.vhw_burundi'
+		}
+		livinggoods_demo {
+			applicationId = 'org.livinggoods.tech.sha.demo'
 		}
 	}
 }

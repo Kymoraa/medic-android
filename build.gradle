@@ -22,18 +22,19 @@ gradle.projectsEvaluated {
 
 repositories {
 	mavenCentral()
-	maven { url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2' }
 	jcenter()
 	maven { url "https://jitpack.io" }
 	google()
+	flatDir {
+		dirs 'libs'
+	}
 }
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-	implementation 'org.xwalk:xwalk_core_library:23.53.589.4:arm@aar'
+	implementation 'org.xwalk:xwalk_core_library:23.53.589.4:arm64-v8a@aar'
 	implementation 'com.simprints:LibSimprints:1.0.11'
 	implementation 'com.github.Mariovc:ImagePicker:1.2.2'
-
 	testImplementation 'junit:junit:4.12'
 	testImplementation 'com.google.android:android-test:4.1.1.4'
 	testImplementation 'org.robolectric:robolectric:3.8'
@@ -73,7 +74,11 @@ android {
 	defaultConfig {
 		versionCode getVersionCode()
 		versionName getVersionName()
+		ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
 		archivesBaseName = "${project.name}-${versionName}"
+		minSdkVersion 19
+		targetSdkVersion 26
+		// When upgrading targetSdkVersion, check that the app menu still works on newer devices.
 	}
 
 	applicationVariants.all {
@@ -135,6 +140,7 @@ android {
 
 		disable 'UnusedResources' // linter can't handle static imports, so just skip this test
 		disable 'GradleDependency' // TODO update to latest support-v4 lib and re-enable this rule
+		disable 'OldTargetApi'
 
 		warningsAsErrors true
 
@@ -181,6 +187,9 @@ android {
 		livinggoodskenya {
 			applicationId = 'org.medicmobile.webapp.mobile.livinggoodskenya'
 		}
+		livinggoods_assisted_networks {
+			applicationId = 'org.medicmobile.webapp.mobile.livinggoods_assisted_networks'
+		}
 		livinggoods_innovation_ke {
 			applicationId = 'org.medicmobile.webapp.mobile.livinggoods_innovation_ke'
 		}
@@ -189,9 +198,6 @@ android {
 		}
 		livinggoods_innovation_ke_hivst {
 			applicationId = 'org.medicmobile.webapp.mobile.livinggoods_innovation_ke_hivst'
-		}
-		livinggoods_assisted_networks {
-			applicationId = 'org.medicmobile.webapp.mobile.livinggoods_assisted_networks'
 		}
 		moh_kenya_siaya_white {
 			applicationId = 'org.medicmobile.webapp.mobile.moh_kenya_siaya'
@@ -205,8 +211,20 @@ android {
 		moh_kenya_siaya_black {
 			applicationId = 'org.medicmobile.webapp.mobile.moh_kenya_siaya_black'
 		}
+		moh_zanzibar_training {
+			applicationId = 'org.medicmobile.webapp.mobile.moh_zanzibar_training'
+		}
+		moh_zanzibar {
+			applicationId = 'org.medicmobile.webapp.mobile.moh_zanzibar'
+		}
 		musomali {
 			applicationId = 'org.medicmobile.webapp.mobile.musomali'
+		}
+		pih_malawi {
+			applicationId = 'org.medicmobile.webapp.mobile.pih_malawi'
+		}
+		pih_malawi_supervisor {
+			applicationId = 'org.medicmobile.webapp.mobile.pih_malawi_supervisor'
 		}
 		simprints {
 			applicationId = 'org.medicmobile.webapp.mobile.simprints'

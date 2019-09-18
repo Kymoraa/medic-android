@@ -251,6 +251,16 @@ android {
     vhw_burundi {
       applicationId = 'org.medicmobile.webapp.mobile.vhw_burundi'
     }
+
+    livinggoods_ug {
+      applicationId = 'org.livinggoods.smarthealth.ug'
+    }
+    livinggoods_ke {
+      applicationId = 'org.livinggoods.smarthealth.ke'
+    }
+    livinggoods_training {
+      applicationId = 'org.livinggoods.smarthealth.training'
+    }
   }
 
   splits {

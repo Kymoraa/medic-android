@@ -86,6 +86,10 @@ android {
     // When upgrading targetSdkVersion, check that the app menu still works on newer devices.
   }
 
+  dexOptions {
+    javaMaxHeapSize "4g"
+  }
+
   applicationVariants.all { variant ->
     buildConfigField "boolean", "DISABLE_APP_URL_VALIDATION", "Boolean.parseBoolean(\"${System.env.DISABLE_APP_URL_VALIDATION}\")";
     buildConfigField "String", "LOG_TAG", '"MedicMobile"'
@@ -124,10 +128,10 @@ android {
 
   signingConfigs {
     release {
-      storeFile file(System.env.ANDROID_KEYSTORE_PATH ?: signingConfigs.debug.storeFile)
-      storePassword System.env.ANDROID_KEYSTORE_PASSWORD ?: signingConfigs.debug.storePassword
-      keyAlias System.env.ANDROID_KEY_ALIAS ?: signingConfigs.debug.keyAlias
-      keyPassword System.env.ANDROID_KEY_PASSWORD ?: signingConfigs.debug.keyPassword
+      storeFile file(System.env.ANDROID_KEYSTORE_PATH)
+      storePassword System.env.ANDROID_KEYSTORE_PASSWORD
+      keyAlias System.env.ANDROID_KEY_ALIAS
+      keyPassword System.env.ANDROID_KEY_PASSWORD
     }
   }
 
@@ -185,6 +189,9 @@ android {
     }
     livinggoods_training {
       applicationId = 'org.livinggoods.smarthealth.training'
+    }
+    livinggoods_ke_an_bobasi {
+      applicationId = 'org.livinggoods.smarthealth.ke.an.bobasi'
     }
   }
 

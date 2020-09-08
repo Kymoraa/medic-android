@@ -193,6 +193,12 @@ android {
     livinggoods_ke_an_bobasi {
       applicationId = 'org.livinggoods.smarthealth.ke.an.bobasi'
     }
+    livinggoods_ug_v3_lite {
+      applicationId = 'org.livinggoods.smarthealth.ug.v3.lite'
+    }
+    livinggoods_ke_kisumu {
+      applicationId = 'org.livinggoods.smarthealth.ke.kisumu'
+    }
   }
 
   splits {
